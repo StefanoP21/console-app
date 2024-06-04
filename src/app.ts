@@ -1,5 +1,11 @@
 import { argv } from './config/plugins/yargs.plugin';
 
-console.log(process.argv);
+// console.log(argv.b);
 
-console.log(argv.b);
+(async () => {
+  await main();
+})();
+
+async function main() {
+  console.log(argv);
+}
