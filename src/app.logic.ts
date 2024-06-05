@@ -1,12 +1,16 @@
-const base: number = 5;
+import fs from 'fs';
+import { argv } from './config/plugins/yargs.plugin';
+
+const { b: base, l: limit, s: showTable } = argv;
+
 const message: string = `
 =======================
-      Table of ${base}
+Table of ${base}
 =======================\n`;
 let output: string = '';
 
 const tableOfMultiplication = (number: number) => {
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= limit; i++) {
     output += `${number} x ${i} = ${number * i}\n`;
   }
 };
@@ -14,11 +18,12 @@ const tableOfMultiplication = (number: number) => {
 tableOfMultiplication(base);
 
 output = message + output;
-console.log(output);
+
+if (showTable) {
+  console.log(output);
+}
 
 //* Write the output to a file
-import fs from 'fs';
-
 const path = 'outputs';
 
 const createFile = (base: number, output: string) => {
