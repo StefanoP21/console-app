@@ -1,2 +1,9 @@
 node_modules/
 outputs/
+
+# Build files
+dist/
+
+# Testing
+coverage/
+*.test.ts
