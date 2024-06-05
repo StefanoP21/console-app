@@ -6,4 +6,3 @@ dist/
 
 # Testing
 coverage/
-*.test.ts
