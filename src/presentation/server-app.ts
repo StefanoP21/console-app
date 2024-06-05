@@ -1,4 +1,5 @@
 import { CreateTable } from '../domain/use-cases/create-table.use-case';
+import { SaveFile } from '../domain/use-cases/save-file.use-case';
 
 interface RunOptions {
   base: number;
@@ -11,7 +12,15 @@ export class ServerApp {
     console.log('Server running...');
 
     const table = new CreateTable().execute({ base, limit });
+    const isSaved = new SaveFile().execute({
+      fileContent: table,
+      fileName: `table-${base}`,
+    });
 
-    if (showTable) console.log(table);
+    if (showTable) console.table(table);
+
+    isSaved
+      ? console.log(`table-${base}.txt created!`)
+      : console.error('Error creating file');
   }
 }
