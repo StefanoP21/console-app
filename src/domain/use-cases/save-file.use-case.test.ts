@@ -1,4 +1,4 @@
-import fs, { mkdirSync } from 'fs';
+import fs from 'fs';
 import { SaveFile } from './save-file.use-case';
 
 describe('SaveFileUseCase', () => {
