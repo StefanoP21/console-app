@@ -32,8 +32,10 @@ export const argv = yargs(hideBin(process.argv))
     default: 'outputs',
     description: 'Destination folder to save the file',
   })
-  .check((argv, options) => {
-    if (argv.b < 1) throw 'Error: the base must be greater than 0';
+  .check((argv) => {
+    if (argv.b < 1) {
+      throw new Error('The base must be greater than 0');
+    }
 
     return true;
   })
